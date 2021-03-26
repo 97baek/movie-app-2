@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import "./App.css";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Movies from "./components/Movies";
 
@@ -24,7 +25,19 @@ const App = () => {
     getMovies();
   }, []);
 
-  return <div>{isLoading ? "isLoading" : <Movies movies={movies} />}</div>;
+  return (
+    <section className="container">
+      {isLoading ? (
+        <div className="loader">
+          <span className="loader-text">Loading...</span>
+        </div>
+      ) : (
+        <div className="movies">
+          <Movies movies={movies} />
+        </div>
+      )}
+    </section>
+  );
 };
 
 export default App;
